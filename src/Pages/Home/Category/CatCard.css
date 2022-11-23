@@ -1,0 +1,6 @@
+.cat-card:hover img{
+    filter: brightness(50%); 
+}
+.cat-card:hover a{
+    color: #bb1414
+}
