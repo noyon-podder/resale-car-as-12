@@ -1,13 +1,22 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext)
+  const {user, userLogout} = useContext(AuthContext)
     const menuItem = [
         <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link>Home</Link></li>,
         <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link>Services</Link></li>
     ]
+
+    const handleLogout = () => {
+      userLogout()
+      .then( () => {
+        toast.success('Logout Successfully')
+      })
+      .catch(err => console.log(err))
+    }
     return (
         <div className='bg-neutral '>
         <div className="navbar py-4 max-w-7xl mx-auto ">
@@ -28,8 +37,11 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/signup" className="btn btn-primary text-white">Register</Link>
-    <span className='text-white'>{user?.displayName}</span>
+   {
+    user?.uid ?
+    <button className='btn btn-warning' onClick={handleLogout}>Logout</button> :   
+    <Link to="/signin" className="btn btn-primary capitalize px-8 text-white">SignIn</Link> 
+   }
   </div>
 </div>
 </div>

@@ -1,12 +1,14 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const SignUp = () => {
     const [userRole, setUserRole] = useState('buyer');
-    const {createNewUser, googleSignIn} = useContext(AuthContext)
+    const {createNewUser, googleSignIn, profileUpdate} = useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
     const provider = new GoogleAuthProvider();
@@ -14,6 +16,8 @@ const SignUp = () => {
         setUserRole(e.target.value)
       }
      const role = userRole;
+
+
     const handleSignUpForm = event => {
       event.preventDefault();
 
@@ -27,18 +31,27 @@ const SignUp = () => {
       const userData = {
         name, 
         email, 
-        password,
         role
       }
-
+      setErrorMessage('')
       createNewUser(email, password)
       .then(result => {
         const user =result.user
         console.log(user)
+        profileUpdate(name)
+        .then( () => {})
+        .catch(err => {
+          console.log(err)
+          setErrorMessage(err.message)
+        })
         saveUserData(userData)
         form.reset()
+
       })
-      .catch(err => console.log(err.message))
+      .catch(err => {
+        console.log(err.message)
+        setErrorMessage(err.message)
+      })
       
       
     }
@@ -46,13 +59,18 @@ const SignUp = () => {
       googleSignIn(provider)
       .then(result => {
         const user = result.user;
+        const email = user.email
+        const name = user.displayName
         console.log(user)
-        saveUserData({userRole})
+        saveUserData({userRole, email, name})
       }).catch(err => {
         console.log(err)
+        setErrorMessage(err.message)
       })
     }
      
+ 
+
     const saveUserData = (userData) => {
       fetch(`http://localhost:5000/users`, {
         method: 'POST',
@@ -86,6 +104,8 @@ const SignUp = () => {
               ><FaGoogle className="text-2xl hover:text-white"/> Google SignUp</button>
             </div>
             <span className="text-center font-semibold text-gray-500 mt-3">or use your email for Signup</span>
+
+           {errorMessage && <p className="text-red-600 font-bold text-center "> {errorMessage}</p>}
             <form onSubmit={handleSignUpForm}>
               <div className="form-control">
                 <label className="label">
@@ -138,7 +158,7 @@ const SignUp = () => {
                 <button className="btn btn-primary text-white">Signup</button>
               </div>
             </form>
-            
+            <p className="text-gray-600 ">Already have account <Link to="/signin" className="text-primary font-semibold">Signin</Link></p>
             </div>
           </div>
         </div>
