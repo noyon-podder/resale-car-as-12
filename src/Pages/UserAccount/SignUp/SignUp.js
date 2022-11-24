@@ -1,8 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../../context/AuthProvider";
 
 const SignUp = () => {
@@ -99,7 +98,7 @@ const SignUp = () => {
               <h2 className="text-center text-primary font-bold text-3xl mb-4">Create Account</h2>
               
             <div>
-              <button className="flex items-center btn btn-outline btn-primary gap-x-4 w-full text-white"
+              <button className="flex items-center btn btn-outline btn-error gap-x-4 w-full text-white"
               onClick={handleGoogleLogin}
               ><FaGoogle className="text-2xl hover:text-white"/> Google SignUp</button>
             </div>
@@ -155,7 +154,7 @@ const SignUp = () => {
               </div>
              </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary text-white">Signup</button>
+                <button className="btn btn-error text-white">Signup</button>
               </div>
             </form>
             <p className="text-gray-600 ">Already have account <Link to="/signin" className="text-primary font-semibold">Signin</Link></p>

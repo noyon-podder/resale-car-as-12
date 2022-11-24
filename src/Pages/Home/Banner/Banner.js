@@ -20,7 +20,7 @@ const Banner = () => {
 
             <h2 className=' sm:text-4xl text-7xl my-5 text-white font-semibold  capitalize'>Improve your business with us</h2>
             <h6 className='text-white font-normal text-xl w-3/4 mt-5'>We provide the best solution for your car needs.We offer great vehicle round the clock.</h6>
-            <button className='btn btn-primary px-8 mt-8'>Start Now</button>
+            <button className='btn btn-error px-8 mt-8'>Start Now</button>
             </div>
         </div>
     );

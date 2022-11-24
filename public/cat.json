@@ -1,0 +1,83 @@
+[
+    {
+        "image": "https://cdn.pixabay.com/photo/2016/11/18/12/52/automobile-1834278_960_720.jpg",
+        "name": "BMW X1",
+        "price": 20000,
+        "use": "2year",
+        "resalePrice": 18000,
+        "location": "Dhaka",
+        "categoryId": "bmw"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2016/04/24/10/48/sports-car-1349139_960_720.jpg",
+        "name": "BMW X7",
+        "price": 25000,
+        "use": "1year",
+        "resalePrice": 20000,
+        "categoryId": "bmw",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2019/10/21/06/48/bmw-4565297__340.jpg",
+        "name": "BMW X5",
+        "price": 50000,
+        "use": "5year",
+        "resalePrice": 42000,
+        "categoryId": "bmw",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2020/03/24/16/44/hyundai-4964667__340.jpg",
+        "name": "Hyundai Creta",
+        "price": 20000,
+        "use": "3year",
+        "resalePrice": 18000,
+        "categoryId": "hyundai",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2016/04/24/10/48/sports-car-1349139_960_720.jpg",
+        "name": "Hyundai Venue",
+        "price": 25000,
+        "use": "1year",
+        "resalePrice": 20000,
+         "categoryId": "hyundai",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2019/10/21/06/48/bmw-4565297__340.jpg",
+        "name": "Hyundai i20",
+        "price": 50000,
+        "use": "5year",
+        "resalePrice": 42000,
+        "categoryId": "hyundai",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2016/03/02/14/37/rally-1232465__340.jpg",
+        "name": "Mahindra Thar",
+        "price": 20000,
+        "use": "3year",
+        "resalePrice": 18000,
+        "categoryId": "marcedes",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://images.pexels.com/photos/6873074/pexels-photo-6873074.jpeg?auto=compress&cs=tinysrgb&w=400",
+        "name": "Mahindra XUV700",
+        "price": 25000,
+        "use": "1year",
+        "resalePrice": 20000,
+        "categoryId": "marcedes",
+        "location": "Dhaka"
+      },
+      {
+        "image": "https://cdn.pixabay.com/photo/2019/10/21/06/48/bmw-4565297__340.jpg",
+        "name": "Mahindra Bolero",
+        "price": 50000,
+        "use": "5year",
+        "resalePrice": 42000,
+        "categoryId": "marcedes",
+        "location": "Dhaka"
+      }
+]

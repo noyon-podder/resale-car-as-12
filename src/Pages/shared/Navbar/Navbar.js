@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/AuthProvider';
 const Navbar = () => {
   const {user, userLogout} = useContext(AuthContext)
     const menuItem = [
-        <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link>Home</Link></li>,
+        <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link to="/">Home</Link></li>,
         <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link>Services</Link></li>
     ]
 
@@ -40,7 +40,7 @@ const Navbar = () => {
    {
     user?.uid ?
     <button className='btn btn-warning' onClick={handleLogout}>Logout</button> :   
-    <Link to="/signin" className="btn btn-primary capitalize px-8 text-white">SignIn</Link> 
+    <Link to="/signin" className="btn btn-error capitalize px-8 text-white">SignIn</Link> 
    }
   </div>
 </div>

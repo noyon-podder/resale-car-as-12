@@ -13,9 +13,9 @@ module.exports = {
         
 "primary": "#db2d2e",
         
-"secondary": "#999999",
+"secondary": "#777777",
         
-"accent": "#37CDBE",
+"accent": "#484848",
         
 "neutral": "#323232",
         
@@ -27,7 +27,7 @@ module.exports = {
         
 "warning": "#FBBD23",
         
-"error": "#F87272",
+"error": "#ff5a5f",
         },
       },
     ],
