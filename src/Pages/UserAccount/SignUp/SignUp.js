@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -5,13 +6,14 @@ import { AuthContext } from "../../../context/AuthProvider";
 
 const SignUp = () => {
     const [userRole, setUserRole] = useState('buyer');
-    const {createNewUser} = useContext(AuthContext)
+    const {createNewUser, googleSignIn} = useContext(AuthContext)
     const navigate = useNavigate()
 
+    const provider = new GoogleAuthProvider();
     const handleUser=(e)=>{
         setUserRole(e.target.value)
       }
-
+     const role = userRole;
     const handleSignUpForm = event => {
       event.preventDefault();
 
@@ -19,7 +21,7 @@ const SignUp = () => {
       const name = form.name.value
       const email = form.email.value;
       const password = form.password.value;
-      const role = userRole;
+     
 
 
       const userData = {
@@ -40,6 +42,16 @@ const SignUp = () => {
       
       
     }
+    const handleGoogleLogin = () => {
+      googleSignIn(provider)
+      .then(result => {
+        const user = result.user;
+        console.log(user)
+        saveUserData({userRole})
+      }).catch(err => {
+        console.log(err)
+      })
+    }
      
     const saveUserData = (userData) => {
       fetch(`http://localhost:5000/users`, {
@@ -59,7 +71,7 @@ const SignUp = () => {
       
     }
      
-    
+   
   return (
     <div className="w-3/4 mx-auto flex items-center justify-center h-screen">
       <div className="hero">
@@ -69,7 +81,9 @@ const SignUp = () => {
               <h2 className="text-center text-primary font-bold text-3xl mb-4">Create Account</h2>
               
             <div>
-              <button className="flex items-center btn btn-outline btn-primary gap-x-4 w-full text-white"><FaGoogle className="text-2xl hover:text-white"/> Google SignUp</button>
+              <button className="flex items-center btn btn-outline btn-primary gap-x-4 w-full text-white"
+              onClick={handleGoogleLogin}
+              ><FaGoogle className="text-2xl hover:text-white"/> Google SignUp</button>
             </div>
             <span className="text-center font-semibold text-gray-500 mt-3">or use your email for Signup</span>
             <form onSubmit={handleSignUpForm}>
