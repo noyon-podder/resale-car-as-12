@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext)
     const menuItem = [
         <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link>Home</Link></li>,
         <li className='text-white font-semibold lg:mr-5 hover:text-primary'><Link>Services</Link></li>
@@ -27,6 +29,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     <Link to="/signup" className="btn btn-primary text-white">Register</Link>
+    <span className='text-white'>{user?.displayName}</span>
   </div>
 </div>
 </div>

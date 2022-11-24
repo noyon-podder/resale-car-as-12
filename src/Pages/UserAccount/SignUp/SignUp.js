@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const SignUp = () => {
     const [userRole, setUserRole] = useState('buyer');
-    
-    
+    const {createNewUser} = useContext(AuthContext)
+    const navigate = useNavigate()
+
     const handleUser=(e)=>{
         setUserRole(e.target.value)
       }
@@ -19,9 +22,42 @@ const SignUp = () => {
       const role = userRole;
 
 
-      console.log(name, email, password, role)
+      const userData = {
+        name, 
+        email, 
+        password,
+        role
+      }
+
+      createNewUser(email, password)
+      .then(result => {
+        const user =result.user
+        console.log(user)
+        saveUserData(userData)
+        form.reset()
+      })
+      .catch(err => console.log(err.message))
+      
+      
     }
      
+    const saveUserData = (userData) => {
+      fetch(`http://localhost:5000/users`, {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(userData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.acknowledged){
+          navigate('/')
+        }
+        console.log(data)        
+      })
+      
+    }
      
     
   return (
@@ -35,7 +71,7 @@ const SignUp = () => {
             <div>
               <button className="flex items-center btn btn-outline btn-primary gap-x-4 w-full text-white"><FaGoogle className="text-2xl hover:text-white"/> Google SignUp</button>
             </div>
-            <span className="text-center font-semibold text-gray-500 mt-3">or use your email for regestration</span>
+            <span className="text-center font-semibold text-gray-500 mt-3">or use your email for Signup</span>
             <form onSubmit={handleSignUpForm}>
               <div className="form-control">
                 <label className="label">
