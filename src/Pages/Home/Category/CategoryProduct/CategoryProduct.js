@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useLoaderData } from 'react-router-dom';
-import CategoryProductCard from './CategoryProductCard';
-import BookingModal from '../CategoryProduct/BookingModal'
+import CategoryProductCard from '../CategoryProductCard/CategoryProductCard';
+import BookingModal from '../BookingModal/BookingModal'
 
 
 const CategoryProduct = () => {
@@ -9,7 +9,6 @@ const CategoryProduct = () => {
     const [bookingCar, setBookingCar] = useState(null)
 
 
-    console.log(bookingCar)
     return (
       <div>
           <div className='grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto gap-10 py-20'>
@@ -27,6 +26,7 @@ const CategoryProduct = () => {
    {
    bookingCar && <BookingModal
    bookingCar={bookingCar}
+   setBookingCar={setBookingCar}
    />
     }    
          </div>

@@ -154,7 +154,7 @@ const SignUp = () => {
               </div>
              </div>
               <div className="form-control mt-6">
-                <button className="btn btn-error text-white">Signup</button>
+                <button type="submit" className="btn btn-error text-white">Signup</button>
               </div>
             </form>
             <p className="text-gray-600 ">Already have account <Link to="/signin" className="text-primary font-semibold">Signin</Link></p>

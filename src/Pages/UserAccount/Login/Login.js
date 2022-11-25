@@ -76,7 +76,7 @@ const SignUp = () => {
               </div>
              
               <div className="form-control mt-6">
-                <button className="btn btn-error text-white">SignIn</button>
+                <button className="btn btn-error text-white" type="submit">SignIn</button>
               </div>
             </form>
             <p className="text-gray-600 ">You are new to  <Link to="/signup" className="text-primary font-semibold">Crete Account</Link></p>
