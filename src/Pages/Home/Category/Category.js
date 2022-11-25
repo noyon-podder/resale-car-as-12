@@ -4,7 +4,7 @@ import {
 import React from 'react';
 import SubTitle from '../../../components/SubTitle/SubTitle';
 import Title from '../../../components/Title/Title';
-import CatCard from './CatCard';
+import CatCard from './CatCard/CatCard';
 
 
 
