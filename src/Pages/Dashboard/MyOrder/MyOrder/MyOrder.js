@@ -42,8 +42,8 @@ const MyOrder = () => {
     </div>
   </div>
         </td>
-        <td>{order?.productName}</td>
-        <td>{order?.productPrice}</td>
+        <td className='text-xl font-semibold text-neutral'>{order?.productName}</td>
+        <td className='font-bold'>${order?.productPrice}</td>
         <td><button className='btn btn-sm btn-success'>Pay</button></td>
       </tr>
     )
