@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Title from "../../../components/Title/Title";
 
 const AddProduct = () => {
     const [userRole, setUserRole] = useState('good');
-    const places = ['Kushtia', 'Dhaka', 'Rajsahi', 'Khulna', 'Rongpur', 'BandorBan', 'Noakhali']
+    const places = ['Kushtia', 'Dhaka', 'Rajsahi', 'Khulna', 'Rongpur', 'BandorBan', 'Noakhali'];
+    const navigate = useNavigate()
 
     const handleUser=(e)=>{
         setUserRole(e.target.value)
@@ -25,6 +27,9 @@ const AddProduct = () => {
         let image = form.image.files[0];
         const quality = userRole;
         const details = form.details.value;
+        const time = new Date();
+
+        console.log(time)
          
        
        
@@ -36,7 +41,7 @@ const AddProduct = () => {
 
         
 
-        fetch(`https://api.imgbb.com/1/upload?expiration=600&key=${imageApi}`, {
+        fetch(`https://api.imgbb.com/1/upload?&key=${imageApi}`, {
             method: 'POST',
             body: formData
         })
@@ -57,7 +62,8 @@ const AddProduct = () => {
                 categoryId,
                 location,
                 quality, 
-                details
+                details,
+                time
             }
             
         fetch(`http://localhost:5000/category`, {
@@ -70,7 +76,8 @@ const AddProduct = () => {
           .then(res => res.json())
           .then(data => {
             if(data.acknowledged){
-             console.log(data)
+             form.reset()
+             navigate('/dashboard/my-product')
             }
             console.log(data)        
           })
@@ -85,7 +92,7 @@ const AddProduct = () => {
 
 
   return (
-    <div className="bg-[#f2f2f2] h-screen p-10">
+    <div className="bg-[#f2f2f2]  p-10">
       <Title>Add New Product</Title>
 
       <form className="mt-10" onSubmit={handleAddProduct}>
@@ -164,7 +171,7 @@ const AddProduct = () => {
         </div>
         <div className="grid gird-cols1 md:grid-cols-2 gap-x-4 mb-10">
           <div className="form-control">
-          <select className="select select-secondary w-full" name="category">
+          <select className="select select-secondary w-full mb-5" name="category">
             <option disabled selected>Product Category</option>
             <option value='bmw'>BMW</option>
             <option value='hyundai'>Hyundai</option>
@@ -178,7 +185,7 @@ const AddProduct = () => {
             <option disabled selected>Select Location</option>
            
             {
-                places.map((place, i) => <option value={place}>{place}</option> )
+                places.map((place, i) => <option value={place} key={i}>{place}</option> )
             }
             
             </select>
@@ -187,7 +194,7 @@ const AddProduct = () => {
         <div className="grid gird-cols1 md:grid-cols-2 gap-x-4 mb-10">
           <div className="form-control">
 
-          <input type="file" className="file-input file-input-bordered w-full" name="image" />
+          <input type="file" className="file-input file-input-bordered w-full mb-5" name="image" />
             
           </div>
           <div className="form-control -mt-1">

@@ -3,7 +3,10 @@ import { Link, Outlet } from 'react-router-dom';
 import Navbar from '../../Pages/shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+
+   
     return (
+      
         <div className="max-w-7xl mx-auto">
             <Navbar/>
             <div className="drawer drawer-mobile">
@@ -16,7 +19,8 @@ const DashboardLayout = () => {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
     
       <li><Link to="/dashboard">My Orders</Link></li>
-      <li><Link to="add-product">Add A Product</Link></li>
+      <li><Link to="/dashboard/add-product">Add A Product</Link></li>
+      <li><Link to="/dashboard/my-product">My Product </Link></li>
     </ul>
   
   </div>

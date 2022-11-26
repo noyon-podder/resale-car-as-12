@@ -6,8 +6,7 @@ import { AuthContext } from '../../../context/AuthProvider';
 const Navbar = () => {
   const {user, userLogout} = useContext(AuthContext)
     const menuItem = [
-        <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to="/">Home</Link></li>,
-        <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>,
+       ,
     ]
 
     const handleLogout = () => {
@@ -26,14 +25,16 @@ const Navbar = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        {menuItem}
+      <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to="/">Home</Link></li>,
+       {user?.uid && <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>}
       </ul>
     </div>
     <Link to="/"className="text-2xl font-bold text-white uppercase ">car<span className='text-primary'>Dealer</span></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
-      {menuItem}
+      <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to="/">Home</Link></li>,
+       {user?.uid && <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>}
     </ul>
   </div>
   <div className="navbar-end">

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../context/AuthProvider';
 
 const BookingModal = ({bookingCar, setBookingCar}) => {
@@ -42,6 +43,7 @@ const BookingModal = ({bookingCar, setBookingCar}) => {
             .then(data => {
                 if(data.acknowledged){
                     setBookingCar(null);
+                    toast.success('Booking Completed')
                     form.reset();
                 }
                 console.log(data)

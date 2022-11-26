@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Loader from '../../../../components/Loader/Loader';
 
 const MyOrder = () => {
@@ -44,7 +45,11 @@ const MyOrder = () => {
         </td>
         <td className='text-xl font-semibold text-neutral'>{order?.productName}</td>
         <td className='font-bold'>${order?.productPrice}</td>
-        <td><button className='btn btn-sm btn-success'>Pay</button></td>
+        <td>
+          {order?.productPrice && !order?.paid &&
+          <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-sm btn-success'>Pay</button></Link>}
+          {order?.productPrice && order?.paid && <span className='text-primary'>paid</span>}
+        </td>
       </tr>
     )
     }
