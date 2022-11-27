@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useRouteError } from 'react-router-dom';
+import { useNavigate, useRouteError } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import errorImage from '../../../images/404.gif';
 
@@ -9,11 +9,13 @@ import errorImage from '../../../images/404.gif';
 const ErrorPage = () => {
     const error = useRouteError()
     const {userLogout} = useContext(AuthContext);
+    const navigate = useNavigate();
     
     const handleLogout = () => {
         userLogout()
         .then( () => {
           toast.success('Logout Successfully')
+          navigate('/signin')
         })
         .catch(err => console.log(err))
     }

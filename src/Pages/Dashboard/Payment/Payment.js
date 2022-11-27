@@ -8,7 +8,7 @@ import CheckOut from './Checkout/CheckOut';
 
 
 
-const stripePromise = loadStripe('pk_test_51M8T8rC3nf5rDn3xzCngM0O0w2R7UqXCbv7LK8oD4EpK3NanoqsMo6JoLf5S5T6jkrCrHzvg3kOeNOyIG6S3At2Y00f1yuPIrK');
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_KEY);
 
 console.log(stripePromise)
 const Payment = () => {

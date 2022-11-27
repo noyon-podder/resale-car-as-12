@@ -35,6 +35,20 @@ const MyProduct = () => {
     if(isLoading){
         return <Loader/>
     }
+
+    const handleAdvertiseButton = product => {
+       fetch('http://localhost:5000/advertises', {
+        method: 'POST', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(product)
+       })
+       .then(res => res.json())
+       .then(data => {
+        console.log(data)
+       })
+    }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -57,10 +71,15 @@ const MyProduct = () => {
         <td>{product.name}</td>
         <td>{product.resalePrice}</td>
         <td>
-            <button className='btn btn-xs btn-success'>Available</button>
+           {
+            product.paid ? <span className='text-primary font-semibold '>Sold</span> : <span className='text-green-600 font-semibold'>Available</span>
+           }
         </td>
         <td>
-            <button className='btn btn-warning btn-sm'>Advertise</button>
+            <button className='btn btn-warning btn-sm'
+             onClick={() => handleAdvertiseButton(product)}
+             disabled={product.paid}
+             >Advertise</button>
         </td>
         <td>
             <button className='btn btn-sm btn-error' onClick={() => handleProductDelete(product._id)}>Delete</button>

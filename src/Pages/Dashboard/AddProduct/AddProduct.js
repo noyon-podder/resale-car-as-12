@@ -5,15 +5,16 @@ import Title from "../../../components/Title/Title";
 const AddProduct = () => {
     const [userRole, setUserRole] = useState('good');
     const places = ['Kushtia', 'Dhaka', 'Rajsahi', 'Khulna', 'Rongpur', 'BandorBan', 'Noakhali'];
+    const imageApi = process.env.REACT_APP_imgbb_key
     const navigate = useNavigate()
-
+//
     const handleUser=(e)=>{
         setUserRole(e.target.value)
       }
 
       const handleAddProduct = event => {
         event.preventDefault();
-    const imageApi = '318f5cf80f96bfaf56e29ae807a28c8b'
+    
 
         const form = event.target;
         const name = form.productName.value;
