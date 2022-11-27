@@ -14,11 +14,11 @@ const BookingModal = ({bookingCar, setBookingCar}) => {
             const userEmail = form.email.value;
             const userName = form.displayName.value;
             const productName = form.productName.value;
-            const productPrice = form.resalePrice.value;
+            const productPrice =parseFloat(form.resalePrice.value);
             const phoneNumber = form.contactNo.value;
             const location = form.location.value;
             
-
+          console.log(productPrice)
             const bookingData = {
                 userEmail,
                 userName,

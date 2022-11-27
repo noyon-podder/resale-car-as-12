@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import Loader from '../../../../components/Loader/Loader';
+import BookingModal from '../BookingModal/BookingModal';
 import CategoryProductCard from '../CategoryProductCard/CategoryProductCard';
-import BookingModal from '../BookingModal/BookingModal'
 
 
 const CategoryProduct = () => {
-    const cars = useLoaderData()
+    const cars = useLoaderData();
+    const navigation = useNavigation()
     const [bookingCar, setBookingCar] = useState(null)
 
+    if(navigation.state === 'loading'){
+        return <Loader/>
+    }
 
     return (
       <div>
