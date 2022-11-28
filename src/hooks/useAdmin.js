@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 const useAdmin = email => {
-    const [isAdmin, setIsAdmin] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         if(email){

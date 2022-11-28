@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const AdvertiseCard = ({advertise}) => {
 
-    const {image, name, sellerName, price, quality, use, location, _id} = advertise;
+    const {image, name, sellerName, price, quality, use, location, } = advertise;     
     console.log(advertise)
     return (
        <>
@@ -16,7 +15,6 @@ const AdvertiseCard = ({advertise}) => {
                    <p className='my-1 text-accent font-normal'>Years of use: <span>{use}</span></p>
                    <p className='my-1 text-accent font-normal'>Quality: <span>{quality}</span></p>
                    <p className=' text-accent font-normal'>Location : <span>{location}</span></p>
-                   <Link to={`/dashboard/payment/${_id}`}><button className='btn btn-info absolute bottom-3 right-3'>Purchase</button></Link>
          </div>
        </div>
        }

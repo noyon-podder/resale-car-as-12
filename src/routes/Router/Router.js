@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../layout/DashboardLayout/DashboardLayout";
 import Main from "../../layout/Main";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../../Pages/Dashboard/AllBuyer/AllBuyer";
+import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import MyOrder from "../../Pages/Dashboard/MyOrder/MyOrder/MyOrder";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
@@ -44,7 +46,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <MyOrder/>
+        element: <PrivateRoute> <MyOrder/></PrivateRoute>
       },
       {
         path: '/dashboard/add-product',
@@ -57,7 +59,15 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/payment/:bookingId',
         element: <Payment/>,
-        loader : async ({params}) => fetch(`http://localhost:5000/bookings/${params.bookingId}`)
+        loader : ({params}) => fetch(`http://localhost:5000/bookings/${params.bookingId}`)
+      },
+      {
+        path: '/dashboard/all-seller',
+        element: <AllSeller/>
+      },
+      {
+        path: '/dashboard/all-buyer',
+        element: <AllBuyer/>
       },
     ]
   }

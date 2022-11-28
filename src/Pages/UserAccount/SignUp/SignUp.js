@@ -5,16 +5,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../../context/AuthProvider";
 
 const SignUp = () => {
-    const [userRole, setUserRole] = useState('buyer');
+    const [role, setRole] = useState('buyer');
     const {createNewUser, googleSignIn, profileUpdate} = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
     const provider = new GoogleAuthProvider();
     const handleUser=(e)=>{
-        setUserRole(e.target.value)
+        setRole(e.target.value)
       }
-     const role = userRole;
+    //  const role = role;
 
 
     const handleSignUpForm = event => {
@@ -61,7 +61,7 @@ const SignUp = () => {
         const email = user.email
         const name = user.displayName
         console.log(user)
-        saveUserData({userRole, email, name})
+        saveUserData({role: role, email, name})
       }).catch(err => {
         console.log(err)
         setErrorMessage(err.message)
@@ -144,12 +144,12 @@ const SignUp = () => {
 
              <div className="flex items-center gap-x-3">
               <input type="radio" name="role" id='buyer' value="buyer" className="radio radio-primary" onChange={handleUser}  required 
-              checked={userRole === 'buyer'} />
+              checked={role === 'buyer'} />
              <label htmlFor="buyer"> Buyer</label>
               </div>
 
               <div className="flex items-center gap-x-3">
-              <input type="radio" name="role" id="seller" value="seller" className="radio radio-primary" onChange={handleUser} required  checked={userRole === 'seller'}/>
+              <input type="radio" name="role" id="seller" value="seller" className="radio radio-primary" onChange={handleUser} required  checked={role === 'seller'}/>
             <label htmlFor="seller">Seller</label>
               </div>
              </div>
