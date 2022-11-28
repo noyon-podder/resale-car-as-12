@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const useSeller = email => {
     const [isSeller, setIsSeller] = useState(false);
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         if(email){
@@ -12,10 +13,11 @@ const useSeller = email => {
             .then(data => {
                 console.log(data)
                 setIsSeller(data.isSeller)
+                setIsLoading(false)
             })
         }
     } , [email])
-    return [isSeller]
+    return [isSeller, isLoading]
 }
 
 export default useSeller;

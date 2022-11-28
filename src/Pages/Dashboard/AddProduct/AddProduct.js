@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Title from "../../../components/Title/Title";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const AddProduct = () => {
     const [userRole, setUserRole] = useState('good');
     const places = ['Kushtia', 'Dhaka', 'Rajsahi', 'Khulna', 'Rongpur', 'BandorBan', 'Noakhali'];
+    const {user} = useContext(AuthContext)
     const imageApi = process.env.REACT_APP_imgbb_key
     const navigate = useNavigate()
 //
@@ -28,6 +31,7 @@ const AddProduct = () => {
         let image = form.image.files[0];
         const quality = userRole;
         const details = form.details.value;
+        const email = user.email;
         const time = new Date();
 
         console.log(time)
@@ -64,6 +68,7 @@ const AddProduct = () => {
                 location,
                 quality, 
                 details,
+                email,
                 time
             }
             
@@ -78,6 +83,7 @@ const AddProduct = () => {
           .then(data => {
             if(data.acknowledged){
              form.reset()
+             toast.success('Product add successfully')
              navigate('/dashboard/my-product')
             }
             console.log(data)        
@@ -107,6 +113,7 @@ const AddProduct = () => {
               placeholder="Product Name"
               name="productName"
               className="input input-bordered "
+              required
             />
           </div>
       <div className="form-control">
@@ -115,9 +122,11 @@ const AddProduct = () => {
             </label>
             <input
               type="text"
+              value={user?.displayName}
               placeholder="Seller Name"
               name="sellerName"
               className="input input-bordered "
+              required
             />
           </div>
           </div>
@@ -131,6 +140,7 @@ const AddProduct = () => {
               placeholder="This Product Market Price"
               name="marketPrice"
               className="input input-bordered "
+              required
             />
           </div>
           <div className="form-control">
@@ -142,6 +152,7 @@ const AddProduct = () => {
               placeholder="Product Price"
               name="resalePrice"
               className="input input-bordered"
+              required
             />
           </div>
         </div>
@@ -156,6 +167,7 @@ const AddProduct = () => {
               placeholder="Contact Number"
               name="contactNumber"
               className="input input-bordered "
+              required
             />
           </div>
           <div className="form-control">
@@ -167,12 +179,13 @@ const AddProduct = () => {
               placeholder="Years Of Use"
               name="useDays"
               className="input input-bordered"
+              required
             />
           </div>
         </div>
         <div className="grid gird-cols1 md:grid-cols-2 gap-x-4 mb-10">
           <div className="form-control">
-          <select className="select select-secondary w-full mb-5" name="category">
+          <select className="select select-secondary w-full mb-5" name="category" required>
             <option disabled selected>Product Category</option>
             <option value='bmw'>BMW</option>
             <option value='hyundai'>Hyundai</option>
@@ -182,7 +195,7 @@ const AddProduct = () => {
             
           </div>
           <div className="form-control">
-          <select className="select select-secondary w-full" name="location">
+          <select className="select select-secondary w-full" name="location" required>
             <option disabled selected>Select Location</option>
            
             {
@@ -195,7 +208,7 @@ const AddProduct = () => {
         <div className="grid gird-cols1 md:grid-cols-2 gap-x-4 mb-10">
           <div className="form-control">
 
-          <input type="file" className="file-input file-input-bordered w-full mb-5" name="image" />
+          <input type="file" className="file-input file-input-bordered w-full mb-5" name="image" required/>
             
           </div>
           <div className="form-control -mt-1">
@@ -222,7 +235,7 @@ const AddProduct = () => {
           </div>
         </div>
           <div>
-          <textarea className="textarea textarea-bordered w-full" placeholder="Product Details" name="details"></textarea>
+          <textarea className="textarea textarea-bordered w-full" placeholder="Product Details" name="details" required></textarea>
           </div>
           <button type="submit" className="btn btn-error px-10 text-center mt-7">Submit</button>
       </form>

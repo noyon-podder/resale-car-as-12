@@ -61,7 +61,7 @@ const SignUp = () => {
         const email = user.email
         const name = user.displayName
         console.log(user)
-        saveUserData({role: role, email, name})
+        saveUserData({ role, email, name})
       }).catch(err => {
         console.log(err)
         setErrorMessage(err.message)
@@ -90,9 +90,9 @@ const SignUp = () => {
      
    
   return (
-    <div className="w-3/4 mx-auto flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen">
       <div className="hero">
-        <div className="hero-content w-1/2">
+        <div className="hero-content w-full lg:w-1/2">
           <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
             <div  className="card-body">
               <h2 className="text-center text-primary font-bold text-3xl mb-4">Create Account</h2>

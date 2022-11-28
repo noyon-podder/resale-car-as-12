@@ -38,11 +38,11 @@ const SignUp = () => {
      
    
   return (
-    <div className="w-3/4 mx-auto flex items-center justify-center h-screen">
+    <div className=" flex items-center justify-center h-screen">
       <div className="hero">
-        <div className="hero-content w-1/2">
-          <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
-            <div  className="card-body">
+        <div className="hero-content w-full lg:w-1/2 ">
+          <div className="card  w-full shadow-2xl bg-base-100">
+            <div  className="card-body w-full">
               <h2 className="text-center text-primary font-bold text-3xl mb-4">Login</h2>
               
            
@@ -80,6 +80,7 @@ const SignUp = () => {
               </div>
             </form>
             <p className="text-gray-600 ">You are new to  <Link to="/signup" className="text-primary font-semibold">Crete Account</Link></p>
+            <Link to='/' className="text-error text-2xl mt-5 text-center">Back to Home </Link>
             </div>
           </div>
         </div>

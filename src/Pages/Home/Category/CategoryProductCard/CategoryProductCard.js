@@ -2,14 +2,14 @@ import React from 'react';
 import { FaCheckSquare } from 'react-icons/fa';
 
 const CategoryProductCard = ({car, setBookingCar}) => {
-    const {name, image, price, use, resalePrice, location, sellerName} = car
+    const {name, image, price, use, resalePrice, location, sellerName, verification} = car
     return (
         <div className="card card-side w-full border relative">
         <img src={image} alt="Movie" className='w-2/4 rounded-tl-xl	'/>
         <div className="py-4 px-6">
             <div className='border-b flex items-center pb-1 gap-x-3'>
             <span className="text-primary text-lg mb-4 font-medium">{sellerName}</span>
-            <FaCheckSquare className='text-[#0f3cd1] text-xl rounded-full'/>
+            {verification && <FaCheckSquare className='text-[#0f3cd1] text-2xl rounded-full -mb-1'/>}
             </div>
             
           <h2 className="font-semibold text-lg text-accent mb-4">{name}</h2>

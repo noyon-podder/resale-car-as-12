@@ -12,7 +12,10 @@ import Home from "../../Pages/Home/Home/Home";
 import ErrorPage from "../../Pages/shared/ErrorPage/ErrorPage";
 import Login from "../../Pages/UserAccount/Login/Login";
 import SignUp from "../../Pages/UserAccount/SignUp/SignUp";
+import AdminRoute from "../PrivateRoute/AdminRoute";
+import BuyerRoute from "../PrivateRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../PrivateRoute/SellerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -42,11 +45,11 @@ export const router = createBrowserRouter([
   {
     path: '/dashboard',
     errorElement: <ErrorPage/>,
-    element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
+    element: <DashboardLayout/>,
     children: [
       {
         path: '/dashboard',
-        element: <PrivateRoute> <MyOrder/></PrivateRoute>
+        element: <BuyerRoute><MyOrder/></BuyerRoute>
       },
       {
         path: '/dashboard/add-product',
