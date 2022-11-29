@@ -6,7 +6,7 @@ import Loader from "../../../components/Loader/Loader";
 const AllBuyer = () => {
 
   const { data: buyerData, isLoading, refetch} = useQuery({
-    queryKey: ["sellerData"],
+    queryKey: ["buyerData"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/buyer");
       const data = await res.json();

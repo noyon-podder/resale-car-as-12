@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheckSquare } from 'react-icons/fa';
 
-const CategoryProductCard = ({car, setBookingCar}) => {
+const CategoryProductCard = ({car, setBookingCar,handleReportButton}) => {
     const {name, image, price, use, resalePrice, location, sellerName, verification} = car
     return (
         <div className="card card-side w-full border relative">
@@ -21,6 +21,7 @@ const CategoryProductCard = ({car, setBookingCar}) => {
             <label htmlFor="booking-category-car" 
             onClick={() => setBookingCar(car)}
             className='btn  btn-sm btn-error absolute bottom-3 right-3'>Book Now</label>
+            <button className='btn btn-info btn-xs my-3' onClick={() => handleReportButton(car)}>report</button>
         </div>
       </div>
     );
