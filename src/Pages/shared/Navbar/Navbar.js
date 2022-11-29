@@ -16,7 +16,7 @@ const Navbar = () => {
     }
     return (
         <div className='bg-[#fefefe] '>
-        <div className="navbar py-4 max-w-7xl mx-auto ">
+        <div className="navbar py-4 max-w-7xl mx-auto flex justify-between">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,6 +25,7 @@ const Navbar = () => {
       <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to="/">Home</Link></li>,
        {user?.uid && <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>}
+       <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/blog'>Blog</Link></li>
       </ul>
     </div>
     <Link to="/"className="text-2xl font-bold text-primary uppercase ">car<span className='text-primary'>Dealer</span></Link>
@@ -33,6 +34,8 @@ const Navbar = () => {
     <ul className="menu menu-horizontal p-0">
       <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to="/">Home</Link></li>,
        {user?.uid && <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>}
+       <li className='text-error font-semibold lg:mr-5 hover:text-primary'><Link to='/blog'>Blog</Link></li>
+
        {
     user?.uid ?
     <button className='btn btn-primary' onClick={handleLogout}>Logout</button> :   

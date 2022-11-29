@@ -1,24 +1,31 @@
-import {
-    useQuery
-} from '@tanstack/react-query';
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import SubTitle from '../../../components/SubTitle/SubTitle';
 import Title from '../../../components/Title/Title';
 import CatCard from './CatCard/CatCard';
 
 
-
 const Category = () => {
-
-    const {data: category = []} = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/category')
-            const data = await res.json()
-            return data;
-        }
+    const [category, setCategory] = useState([])
+    // const {data: category = []} = useQuery({
+    //     queryKey: ['category'],
+    //     queryFn: async () => {
+    //         const res = await fetch('')
+    //         const data = await res.json()
+    //         return data;
+    //     }
+    // })
+    axios.get('http://localhost:5000/category')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+      setCategory(response.data)
     })
-
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    
 
     return (
         <div className='py-20 max-w-7xl mx-auto'>

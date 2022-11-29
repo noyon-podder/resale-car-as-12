@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import toast from "react-hot-toast";
 import Loader from "../../../components/Loader/Loader";
 
 const ReportProduct = () => {
@@ -21,7 +22,11 @@ const ReportProduct = () => {
       method: 'DELETE'
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      if(data.deletedCount){
+        toast.success('Delete Successfully')
+      }
+    })
   }
   return (
     <div>
