@@ -4,11 +4,11 @@ import toast from "react-hot-toast";
 import Loader from "../../../components/Loader/Loader";
 
 const ReportProduct = () => {
-
+  
   const { data: reportProducts, isLoading, refetch} = useQuery({
     queryKey: ["reportProducts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/report-item");
+      const res = await fetch("https://resale-server-two.vercel.app/report-item");
       const data = await res.json();
       return data;
     },
@@ -18,7 +18,7 @@ const ReportProduct = () => {
   }
  
   const handleDelete = id => {
-    fetch(`http://localhost:5000/report-item/${id}`, {
+    fetch(`https://resale-server-two.vercel.app/report-item/${id}`, {
       method: 'DELETE'
     })
     .then(res => res.json())

@@ -9,7 +9,7 @@ const AllSeller = () => {
   const { data: sellerData, isLoading, refetch } = useQuery({
     queryKey: ["sellerData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/seller");
+      const res = await fetch("https://resale-server-two.vercel.app/seller");
       const data = await res.json();
       return data;
     },
@@ -18,7 +18,7 @@ const AllSeller = () => {
     return <Loader />;
   }
   const handleSellerVerify = seller => {
-    fetch(`http://localhost:5000/verify/${seller?.email}`, {
+    fetch(`https://resale-server-two.vercel.app/verify/${seller?.email}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'
@@ -36,7 +36,7 @@ const AllSeller = () => {
   }
 
   const handleDelete = id => {
-    fetch(`http://localhost:5000/seller-delete/${id}`, {
+    fetch(`https://resale-server-two.vercel.app/seller-delete/${id}`, {
         method: 'DELETE'
     })
     .then(res => res.json())

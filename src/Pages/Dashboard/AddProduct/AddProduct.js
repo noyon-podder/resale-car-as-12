@@ -72,7 +72,7 @@ const AddProduct = () => {
                 time
             }
             
-        fetch(`http://localhost:5000/category`, {
+        fetch(`https://resale-server-two.vercel.app/category`, {
             method: 'POST',
             headers: {
               'content-type' : 'application/json'

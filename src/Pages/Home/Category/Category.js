@@ -15,7 +15,7 @@ const Category = () => {
     //         return data;
     //     }
     // })
-    axios.get('http://localhost:5000/category')
+    axios.get('https://resale-server-two.vercel.app/category')
     .then(function (response) {
       // handle success
       console.log(response);

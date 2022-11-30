@@ -17,7 +17,7 @@ const CategoryProduct = () => {
     const handleReportButton = product => {
         
 
-        fetch('http://localhost:5000/report-item', {
+        fetch('https://resale-server-two.vercel.app/report-item', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

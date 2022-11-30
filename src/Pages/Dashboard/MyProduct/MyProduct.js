@@ -7,7 +7,7 @@ const MyProduct = () => {
 
     const [products, setProducts] = useState([])
     const {user} = useContext(AuthContext)
-    const url = `http://localhost:5000/all-product?email=${user?.email}`
+    const url = `https://resale-server-two.vercel.app/all-product?email=${user?.email}`
   
     useEffect(() => {
         fetch(url)
@@ -22,7 +22,7 @@ const MyProduct = () => {
 
     const handleProductDelete = id => {
         
-        fetch(`http://localhost:5000/all-product/${id}`, {
+        fetch(`https://resale-server-two.vercel.app/all-product/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -38,7 +38,7 @@ const MyProduct = () => {
 
 
     const handleAdvertiseButton = product => {
-       fetch('http://localhost:5000/advertises', {
+       fetch('https://resale-server-two.vercel.app/advertises', {
         method: 'POST', 
         headers: {
             'content-type': 'application/json'
